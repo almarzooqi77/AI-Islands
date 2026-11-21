@@ -12,7 +12,7 @@
     reset: 'Start over', resetAsk: 'Erase all stars and cards?', yes: 'Yes, erase', no: 'Keep them',
     illustrative: 'Illustration — simplified so you can see the idea',
     certificate: 'Certificate', certTitle: 'AI Explorer', certFor: 'This certifies that', print: 'Print / save as PDF', yourName: 'Type your name',
-    certText: 'sailed the nine islands of Voyage 1 and can explain how modern AI works.',
+    certText: 'sailed the eight islands of Voyage 1 and can explain how modern AI works.',
     happened: 'What just happened', gotIt: 'Got it', quick: 'Quick check', correct: 'Exactly!', notQuite: 'Not quite.', showCard: 'Show my card',
     memory: 'Memory check from', thanks: 'On to this island!',
     review: 'Quick review', reviewHint: 'Three questions from cards you already won.', reviewDone: 'right.', reviewGood: 'Your cards are sticking!', reviewMore: 'Peek at those cards in the album, then try another round.', reviewAgain: 'Another round', reviewNeed: 'Win 2 cards to unlock the review.',
@@ -21,7 +21,7 @@
     statsKey: 'Red = under 60% right: people still find this idea confusing. Green = 85% or more.',
     voyage1: '⛵ Voyage 1', voyage2: '🌋 Voyage 2', voyage2Open: '🌋 Voyage 2 is open: using AI safely at work!', allDone2: '🏆 Both voyages explored! You are an AI Guardian.',
     cert2Title: 'AI Guardian', cert2Text: 'sailed Voyage 2 and won the castle: uses AI safely at work, spots deepfakes and hidden instructions, and checks AI for bias.',
-    greet: ['Hi, I am Noor!', 'Every island hides one big AI idea.', 'Play first. The name comes after. Ready?'],
+    greet: ['Hi, I am Shurooq!', 'Every island hides one big AI idea.', 'Play first. The name comes after. Ready?'],
   },
   islands: [
     { id: 'kinds', icon: '🏝️', name: 'Twin Isles', concept: 'Kinds of AI' },
@@ -32,11 +32,11 @@
     { id: 'temperature', icon: '🌡️', name: 'Dial Volcano', concept: 'Temperature' },
     { id: 'hallucination', icon: '🎭', name: 'Isle of Tall Tales', concept: 'Hallucination' },
     { id: 'embeddings', icon: '🧭', name: 'Meaning Map', concept: 'Embeddings' },
-    { id: 'rag', icon: '📚', name: 'Open-Book Reef', concept: 'RAG' },
   ],
 
   islands2: [
     { id: 'cutoff', icon: '⏳', name: 'Time Capsule Reef', concept: 'Knowledge cutoff' },
+    { id: 'rag', icon: '📚', name: 'Open-Book Reef', concept: 'RAG' },
     { id: 'agents', icon: '🤖', name: 'Toolbelt Cove', concept: 'AI agents' },
     { id: 'injection', icon: '🕵️', name: 'Sneaky Note Rock', concept: 'Prompt injection' },
     { id: 'safety', icon: '🛡️', name: 'Safe Harbour', concept: 'Safe AI use' },

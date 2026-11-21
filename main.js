@@ -104,13 +104,13 @@ function tick() {
   raf = parts.length ? requestAnimationFrame(tick) : 0;
 }
 
-/* ---------- Noor, the guide ---------- */
+/* ---------- Shurooq, the guide ---------- */
 const POSES = { point: 'assets/noor-point.webp', curious: 'assets/noor-curious.webp', cheer: 'assets/noor-cheer.webp' };
 function makeGuide(pose = 'point') {
   const img = h('img', { src: POSES[pose], alt: '' });
   const text = h('span', { class: 'say', 'aria-hidden': 'true' }), actions = h('div', { class: 'actions' });
   const said = h('span', { class: 'sr-only', role: 'status' }); // screen readers hear the whole line once, not the typewriter
-  const bubble = h('div', { class: 'bubble' }, h('span', { class: 'name' }, state.lang === 'ar' ? 'نور' : 'Noor'), text, said, actions);
+  const bubble = h('div', { class: 'bubble' }, h('span', { class: 'name' }, state.lang === 'ar' ? 'شروق' : 'Shurooq'), text, said, actions);
   const el = h('div', { class: 'guide' }, bubble, img);
   let skip = null, token = 0;
   bubble.addEventListener('click', () => skip && skip());
@@ -191,9 +191,10 @@ function titleScreen() {
 
 /* ---------- map ---------- */
 // Percent positions; RTL mirrors x. Portrait layout zig-zags downward.
-const LAND = [[8, 24], [28, 34], [48, 22], [68, 32], [88, 26], [84, 70], [62, 78], [38, 66], [14, 76]];
-const LAND2 = [[10, 28], [34, 36], [60, 24], [86, 34], [74, 72], [46, 78], [18, 72]];
-const port = n => Array.from({ length: n }, (_, i) => [n > 3 && i === n - 1 ? 50 : (i % 2 ? 72 : 28) + (i % 4 === 1 ? 4 : 0), (n > 3 ? 5 : 16) + i * Math.min(84 / (n - 1), 32)]);
+const LAND = [[10, 26], [32, 34], [55, 22], [82, 30], [84, 68], [60, 76], [36, 64], [12, 74]];
+const LAND2 = [[10, 28], [32, 36], [55, 24], [84, 32], [86, 70], [62, 78], [38, 68], [14, 74]];
+// Phones: a zig-zag down the screen, with ~70 px kept free at the top and bottom so the first and last island (and the boat) never touch the edge.
+const port = (n, H) => Array.from({ length: n }, (_, i) => [n > 3 && i === n - 1 ? 50 : (i % 2 ? 72 : 28) + (i % 4 === 1 ? 4 : 0), n > 3 ? (70 + (H - 140) * i / (n - 1)) / H * 100 : 16 + i * 32]);
 function nextIsland() { return islandList().find(x => built(x.id) && !state.stars[x.id]); }
 function playable(i) { const list = islandList(); return built(list[i].id) && (!!state.stars[list[i].id] || list.slice(0, i).every(x => !built(x.id) || state.stars[x.id])); } // won islands stay replayable when a new one is added before them
 function smoothPath(pts) {
@@ -218,7 +219,7 @@ function mapScreen() {
   for (let c = 0; c < 3; c++) map.append(h('div', { class: 'cloud', style: `top:${12 + c * 30}%;animation-duration:${50 + c * 17}s;animation-delay:${-c * 19}s;opacity:${.5 - c * .1}` }));
   const W = map.clientWidth, H = map.clientHeight, rtl = state.lang === 'ar';
   const land = v2 ? LAND2 : LAND;
-  const pts = (portrait ? port(land.length) : land).map(([x, y]) => [((rtl ? 100 - x : x) / 100) * W, (y / 100) * H]);
+  const pts = (portrait ? port(land.length, H) : land).map(([x, y]) => [((rtl ? 100 - x : x) / 100) * W, (y / 100) * H]);
   const firstSoon = list.findIndex(x => !built(x.id));
   const doneIdx = nxt ? list.indexOf(nxt) : firstSoon < 0 ? list.length - 1 : firstSoon;
   const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
@@ -274,7 +275,7 @@ async function islandScreen(id) {
   app.replaceChildren(h('section', { class: 'screen island', style: `--bg:url(assets/${BG[id] || id + '-bg'}.webp)` },
     topbar(h('span', { class: 'island-title' }, `${isl.icon} ${isl.name}`)),    h('div', { class: 'island-body' }, g.el, stage)));
   const alive = () => my === runId && document.body.contains(stage);
-  // Keyboard players never lose their place: when the focused control disappears, focus the first live one (Noor's button first).
+  // Keyboard players never lose their place: when the focused control disappears, focus the first live one (Shurooq's button first).
   new MutationObserver(() => {
     const a = document.activeElement;
     if (alive() && !document.querySelector('.overlay') && (!a || a === document.body || a.disabled || !document.body.contains(a)))
@@ -461,7 +462,7 @@ function certificate(ch = 1) {
         h('div', { class: 'cert-for' }, ui.certFor), nameEl,
         h('p', { class: 'cert-text' }, ch === 2 ? ui.cert2Text : ui.certText),
         h('div', { class: 'cert-icons' }, list.map(x => h('span', { title: x.concept }, x.icon))),
-        h('div', { class: 'cert-foot' }, h('span', {}, '⭐ ', totalStars()), h('span', {}, date), h('span', {}, state.lang === 'ar' ? '— نور' : '— Noor'))),
+        h('div', { class: 'cert-foot' }, h('span', {}, '⭐ ', totalStars()), h('span', {}, date), h('span', {}, state.lang === 'ar' ? '— شروق' : '— Shurooq'))),
       input,
       h('div', { class: 'actions' },
         h('button', { class: 'btn leaf', onclick: () => print() }, '🖨️ ', ui.print),
