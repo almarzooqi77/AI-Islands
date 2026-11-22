@@ -86,7 +86,14 @@
       oldName: 'Old bot', old: 'Sorry, I did not understand. Press 1 for Orders, 2 for Billing, 3 for Help.',
       newName: 'AI chatbot', new: 'Sorry your parcel is late! A week is too long. Can you share the order number so I can check where it is?',
       q: 'Which one understood you?', right: 'Yes!', wrong: 'Look again: the old bot only offers a fixed menu.',
-      why: 'The old bot follows a fixed script written by people. The AI chatbot writes its own reply, one word at a time. Inside it is a word-guesser called an LLM. Meet Polly!',
+      why: 'The old bot follows a fixed script written by people. The AI chatbot writes its own reply. Inside it is an LLM. But what is an LLM? Let us cook one!',
+    },
+    pot: {
+      title: 'What is an LLM? Let us make one!', hint: 'Tap everything to throw it into the pot.', full: 'Trillions of words!',
+      items: [['📚', 'Books'], ['📖', 'Dictionaries'], ['🌐', 'Websites'], ['📰', 'News'], ['💬', 'Conversations'], ['🧾', 'Manuals']],
+      stir: '🥄 Stir for months',
+      out: 'Out comes a model! It did not keep the books. It learned how words usually follow each other.',
+      name: 'Large = a mountain of text. Language = words. Model = what came out of the pot. Meet Polly, our model!',
     },
     typing: {
       title: 'Now watch a chatbot answer', q: 'Question: Which is the biggest planet?',
@@ -96,7 +103,7 @@
     },
     reveal: {
       term: 'Large Language Model (LLM)', icon: '🦜',
-      what: 'Large: it read a huge library of text. Language: it works with words. Model: a guessing machine built from all that reading. It writes by guessing the next word, again and again.',
+      what: 'Large: it read a huge library of text. Language: it works with words. Model: a word-guessing machine built from all that reading.',
       like: "Your phone's autocomplete… after reading a whole library.",
       tip: 'GPT (inside ChatGPT), Claude and Gemini are all LLMs, made by different companies. They pick likely words, not checked facts.',
       links: ['Tokens', 'Temperature', 'Hallucination'],
